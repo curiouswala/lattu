@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>THE DIVE — Skyfall Para Training School</title>
 <meta name="description" content="A scroll-driven skydiving journey: exit, freefall, canopy, weather and a safe landing." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,41 +12,37 @@
 <!-- ============ FIXED CINEMATIC STAGE ============ -->
 <div class="stage" id="stage" aria-hidden="true">
 
-  <!-- Sky (gradient driven by altitude) -->
   <div class="sky" id="sky"></div>
   <div class="sky-glow" id="skyGlow"></div>
-
-  <!-- Star field for high altitude -->
   <div class="stars" id="stars"></div>
 
-  <!-- Parallax cloud decks -->
   <div class="clouds deck-far"  id="cloudsFar"></div>
   <div class="clouds deck-mid"  id="cloudsMid"></div>
   <div class="clouds deck-near" id="cloudsNear"></div>
 
-  <!-- Speed / wind streaks -->
   <div class="windfield" id="windfield"></div>
 
-  <!-- The aircraft -->
+  <!-- The aircraft (outer = scroll recede, inner = live idle) -->
   <div class="plane" id="plane">
-    <svg viewBox="0 0 320 140" width="320" height="140" aria-hidden="true">
-      <g fill="#e9eef5">
-        <path d="M40 78 L250 64 Q300 60 312 70 Q300 84 250 86 L60 96 Q44 96 40 88 Z"/>
-        <path d="M120 70 L96 26 L116 24 L168 66 Z" fill="#c4ccd8"/>
-        <path d="M120 84 L100 120 L120 120 L168 86 Z" fill="#aab4c4"/>
-        <path d="M250 66 L246 40 L262 42 L276 66 Z" fill="#c4ccd8"/>
-        <circle cx="86" cy="80" r="5" fill="#7fb2e6"/>
-        <circle cx="104" cy="78" r="5" fill="#7fb2e6"/>
-        <circle cx="122" cy="76" r="5" fill="#7fb2e6"/>
-      </g>
-      <rect x="150" y="74" width="30" height="20" rx="3" fill="#1a2230"/>
-    </svg>
+    <div class="plane-body">
+      <svg viewBox="0 0 320 140" width="320" height="140" aria-hidden="true">
+        <g fill="#e9eef5">
+          <path d="M40 78 L250 64 Q300 60 312 70 Q300 84 250 86 L60 96 Q44 96 40 88 Z"/>
+          <path d="M120 70 L96 26 L116 24 L168 66 Z" fill="#c4ccd8"/>
+          <path d="M120 84 L100 120 L120 120 L168 86 Z" fill="#aab4c4"/>
+          <path d="M250 66 L246 40 L262 42 L276 66 Z" fill="#c4ccd8"/>
+          <circle cx="86" cy="80" r="5" fill="#7fb2e6"/>
+          <circle cx="104" cy="78" r="5" fill="#7fb2e6"/>
+          <circle cx="122" cy="76" r="5" fill="#7fb2e6"/>
+        </g>
+        <rect x="150" y="74" width="30" height="20" rx="3" fill="#1a2230"/>
+      </svg>
+    </div>
   </div>
 
   <!-- The jumper + canopy rig -->
   <div class="rig" id="rig">
 
-    <!-- Parachute canopy (unfurls on deploy) -->
     <div class="canopy" id="canopy">
       <svg viewBox="0 0 360 220" width="360" height="220" aria-hidden="true">
         <defs>
@@ -70,38 +65,47 @@
       </svg>
     </div>
 
-    <!-- The skydiver -->
+    <!-- The skydiver (our main character) -->
     <div class="diver" id="diver">
-      <svg viewBox="0 0 220 220" width="220" height="220" aria-hidden="true">
-        <!-- FREEFALL POSE (belly to earth, arched box) -->
-        <g id="poseFreefall" fill="#16202e">
-          <ellipse cx="110" cy="58" rx="20" ry="18"/>
-          <rect x="86" y="70" width="48" height="74" rx="20"/>
-          <path d="M92 84 L44 60 L34 78 L86 108 Z"/>
-          <path d="M128 84 L176 60 L186 78 L134 108 Z"/>
-          <path d="M96 140 L62 188 L80 198 L110 150 Z"/>
-          <path d="M124 140 L158 188 L140 198 L110 150 Z"/>
-          <rect x="92" y="44" width="36" height="26" rx="12" fill="#ff8324"/>
+      <svg viewBox="0 0 240 240" width="240" height="240" aria-hidden="true">
+
+        <!-- FREEFALL POSE — belly to earth, arched, ponytail streaming -->
+        <g id="poseFreefall">
+          <path id="ponyFF" d="M120 44 C152 24 180 16 202 26 C184 30 176 40 174 53
+                   C190 51 202 60 204 73 C186 67 172 73 162 84
+                   C154 60 138 50 120 53 Z" fill="#3b2415"/>
+          <path d="M96 96 L38 78 L32 98 L92 120 Z" fill="#16b8a7"/>
+          <path d="M134 96 L192 78 L198 98 L138 120 Z" fill="#16b8a7"/>
+          <path d="M104 152 L74 210 L92 218 L122 160 Z" fill="#0f8f83"/>
+          <path d="M126 152 L156 210 L138 218 L116 160 Z" fill="#0f8f83"/>
+          <path d="M90 78 Q115 64 142 78 L146 140 Q115 158 86 140 Z" fill="#1ad0bc"/>
+          <rect x="100" y="92" width="34" height="42" rx="9" fill="#0f8f83"/>
+          <ellipse cx="116" cy="54" rx="19" ry="18" fill="#e9b793"/>
+          <path d="M97 50 a19 19 0 0 1 38 0 q-19 -11 -38 0 Z" fill="#202833"/>
+          <rect x="101" y="52" width="30" height="11" rx="5" fill="#0c0f14"/>
         </g>
-        <!-- UNDER-CANOPY POSE (upright in harness) -->
-        <g id="poseCanopy" fill="#16202e" opacity="0">
-          <circle cx="110" cy="48" r="17"/>
-          <rect x="92" y="62" width="36" height="62" rx="14"/>
-          <path d="M96 70 L70 20 L84 14 L112 66 Z"/>
-          <path d="M124 70 L150 20 L136 14 L108 66 Z"/>
-          <rect x="95" y="120" width="13" height="64" rx="6"/>
-          <rect x="112" y="120" width="13" height="64" rx="6"/>
-          <rect x="94" y="36" width="32" height="22" rx="10" fill="#ff8324"/>
+
+        <!-- UNDER-CANOPY POSE — upright in the harness -->
+        <g id="poseCanopy" opacity="0">
+          <path id="ponyCP" d="M104 40 C90 24 74 16 60 22 C72 30 74 42 72 55
+                   C64 74 68 96 82 108 C84 86 96 66 110 58 Z" fill="#3b2415"/>
+          <path d="M98 74 L70 22 L82 16 L112 70 Z" fill="#16b8a7"/>
+          <path d="M126 74 L154 22 L142 16 L112 70 Z" fill="#16b8a7"/>
+          <path d="M96 64 Q114 56 132 64 L136 124 Q114 134 92 124 Z" fill="#1ad0bc"/>
+          <rect x="100" y="80" width="28" height="36" rx="8" fill="#0f8f83"/>
+          <rect x="102" y="120" width="13" height="62" rx="6" fill="#0f8f83"/>
+          <rect x="115" y="120" width="13" height="62" rx="6" fill="#0f8f83"/>
+          <circle cx="114" cy="50" r="17" fill="#e9b793"/>
+          <path d="M97 48 a17 17 0 0 1 34 0 q-17 -10 -34 0 Z" fill="#202833"/>
+          <rect x="100" y="48" width="28" height="10" rx="5" fill="#0c0f14"/>
         </g>
       </svg>
     </div>
   </div>
 
-  <!-- Weather: rain + storm + lightning -->
   <div class="rain" id="rain"></div>
   <div class="lightning" id="lightning"></div>
 
-  <!-- The ground rushing up -->
   <div class="ground" id="ground">
     <div class="field"></div>
     <div class="dropzone" id="dropzone">
@@ -111,12 +115,10 @@
     <div class="dust" id="dust"></div>
   </div>
 
-  <!-- Cinematic overlays -->
   <div class="vignette" id="vignette"></div>
   <div class="gforce" id="gforce"></div>
   <div class="flash" id="flash"></div>
 
-  <!-- HUD -->
   <div class="hud">
     <div class="hud-block">
       <span class="hud-label">Altitude</span>
@@ -133,25 +135,27 @@
   </div>
 </div>
 
-<!-- ============ SCROLL TRACK (drives the dive) ============ -->
+<!-- ============ SCROLL TRACK ============ -->
 <main class="track">
   <header class="hero">
-    <p class="kicker">Skyfall Para Training School</p>
-    <h1>THE&nbsp;DIVE</h1>
-    <p class="sub">14,000 feet. 60 seconds of freefall. One canopy between you and the ground.<br/>Scroll to take the jump.</p>
-    <div class="scroll-cue"><span></span>scroll</div>
+    <div class="copy">
+      <p class="kicker">Skyfall Para Training School</p>
+      <h1>THE&nbsp;DIVE</h1>
+      <p class="sub">14,000 feet. 60 seconds of freefall.<br/>One canopy between you and the ground.</p>
+    </div>
+    <div class="scroll-cue"><span></span>scroll to jump</div>
   </header>
 
-  <section class="beat" data-title="Exit"><h2>The Door Opens</h2><p>Wind roars past the open hatch. You check your rig, breathe, and step into the sky.</p></section>
-  <section class="beat" data-title="Freefall"><h2>Terminal Velocity</h2><p>Belly to earth, arched and stable. 120 miles per hour. The altimeter spins down.</p></section>
-  <section class="beat" data-title="Deploy"><h2>Pull</h2><p>Pilot chute out. Lines stretch. The canopy blossoms and slams you upright.</p></section>
-  <section class="beat" data-title="Weather"><h2>Fight The Wind</h2><p>A squall rolls in. Steer through gusts and rain — read the air, hold your line.</p></section>
-  <section class="beat" data-title="Approach"><h2>Final Approach</h2><p>The dropzone grows. Set up your pattern. Eyes on the target, hands ready to flare.</p></section>
+  <section class="beat"><div class="copy"><h2>The Door Opens</h2><p>Wind roars past the open hatch. She checks her rig, breathes, and steps into the sky.</p></div></section>
+  <section class="beat"><div class="copy"><h2>Terminal Velocity</h2><p>Belly to earth, arched and stable. 120 miles per hour — the airframe of her body fighting the wind.</p></div></section>
+  <section class="beat"><div class="copy"><h2>Pull</h2><p>Pilot chute out. Lines snap taut. The canopy blossoms and slams her upright.</p></div></section>
+  <section class="beat"><div class="copy"><h2>Fight The Wind</h2><p>A squall rolls in. She steers through gusts and rain — reading the air, holding her line.</p></div></section>
+  <section class="beat"><div class="copy"><h2>Final Approach</h2><p>The dropzone grows. Set up the pattern. Eyes on the target, hands ready to flare.</p></div></section>
 
   <section class="finale" id="finale">
     <div class="card">
       <p class="kicker">Touchdown</p>
-      <h2>You Landed It.</h2>
+      <h2>She Landed It.</h2>
       <p>That rush? We teach it properly — exit, freefall, canopy control and safe landings, from your first tandem to a solo licence.</p>
       <a class="cta" href="#" onclick="return false;">Begin Your Training</a>
       <p class="fineprint">Skyfall Para Training School · Licensed instructors · Tandem &amp; AFF programs</p>
