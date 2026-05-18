@@ -1,0 +1,24 @@
+FREE FLIGHT — image slots
+=========================
+
+The pitch page renders fully on its own (every card has a generated SVG
+illustration). To swap in real product photos, save an image into THIS
+folder with the exact filename below. No code changes needed — each <img>
+falls back to its SVG art if the file is missing.
+
+filename            put a photo from                                              what to grab
+------------------  ------------------------------------------------------------  ------------------------------
+birdly.jpg          https://birdlyvr.com/2024/02/09/introducing-birdly-world/     the Birdly rig with a rider
+vart.jpg            https://vartarcade.com/about-product/take-off-virtually-with-the-most-realistic-vr-paraglider-simulator.html   the 9D paraglider platform
+enversed.jpg        https://enversedstudios.com/en/portfolio/vr-paragliding/      the VR paragliding rig
+waggasim.jpg        https://store.steampowered.com/app/3058640/WaggaSim/          an in-game flight screenshot
+paraglidingsim.jpg  https://evan-burrows.itch.io/paragliding-sim                  an in-game flight screenshot
+xcsim.jpg           https://xcsim.com/                                            an XC sim screenshot
+gasometer.jpg       https://www.gasometer.de/en/exhibitions/the-eye-in-the-sky    the giant suspended Earth sphere
+intermediate.jpg    https://www.im-en.com/en/projects/gasometer-oberhausen        the projection / dome shot
+freeflight.jpg      https://freeflightexperience.com/                             the VR free-flight rig
+
+Note: these were NOT auto-downloaded — this build environment blocks
+outbound file downloads (network allowlist) and the sites refuse bots,
+so images must be added from a normal browser. Use only with proper
+credit / permission in any public-facing version of the pitch.
